@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+html, body {
+  background-color: #0A0A0A;
+  color: #D4D4D4;
+  transition: background-color 300ms, color 300ms;
+}
+
+html.dark, html.dark body {
+  background-color: #0A0A0A;
+  color: #D4D4D4;
+}
+
+html:not(.dark), html:not(.dark) body {
+  background-color: #FFFFFF;
+  color: #262626;
+}
+
+/* Custom scrollbar adjustments */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.2);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.4);
+}
+
+/* High contrast accessibility focus states */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+/* Hard print template overrides so Abedinego's CV fits exquisitely on a standard singular A4 sheet when printing is invoked. */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+  }
+  
+  /* Hide the entire portfolio wrapper, menus, footer, buttons, chatbot */
+  #root > div > *:not(#main-cv-wrapper) {
+    display: none !important;
+  }
+  
+  #main-cv-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Hide CV controls and format selectors */
+  .print:hidden, 
+  #cv-section > div:first-child {
+    display: none !important;
+  }
+  
+  #cv-section {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  
+  /* Adjust margins for tight paper alignment */
+  @page {
+    margin: 1.5cm;
+  }
+}

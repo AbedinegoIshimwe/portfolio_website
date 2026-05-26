@@ -1,10 +1,19 @@
 ---
-const name = "Abedinego Ishimwe";
+import App from '../App.tsx';
+import '../index.css';
 ---
 
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abedinego Ishimwe // Portfolio & Representative</title>
+  </head>
   <body>
-    <h1>Hello, I'm {name}</h1>
-    <p>Software Engineer & Builder.</p>
+    <div id="root">
+      {/* client:load tells Astro to hydrate this component interactively in the browser */}
+      <App client:load />
+    </div>
   </body>
 </html>
